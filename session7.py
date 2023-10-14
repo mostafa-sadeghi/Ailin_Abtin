@@ -1,10 +1,71 @@
 # message = "hello my friends. welcome to python class"
-# for x in message:
-#     print(x)
+
+# for chizi in message:
+#     print(chizi, end=" ")
 
 
 # for i in range(len(message)):
-#     print(message[i])
+#     print(message[i], end=" ")
+
+
+"""
+برنامه ای بنویسید که نام شخص را از ورودی 
+بگیرد و هریک از کاراکترهای آن را در یک خط جداگانه پرینت نماید.
+
+"""
+# name = input("enter a name: ")
+# for x in name:
+#     print(x)
+
+
+# for i in range(len(name)):
+#     print(name[i])
+
+
+"""
+numbers = "123456789"
+
+بین رقم های موجود در متغیر بالا کاما جایگذاری کنید
+
+1,2,3,4,5,6,7
+
+قسمت دوم:
+رقم های موجود در متغیر بالا را با هم جمع نمایید
+
+"""
+
+
+
+
+x = []
+print("my list", x)
+for i in range(3):
+    n = int(input("enter a number: "))
+    x.append(n)
+print("my list", x)
+print("sum is", sum(x))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # i = 0
 # while i < len(message):
