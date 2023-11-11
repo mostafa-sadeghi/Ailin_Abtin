@@ -22,11 +22,12 @@ snake_head = create_turtle("square", "green")
 snake_head.direction = ""
 snake_food = create_turtle("circle", "red")
 
+def change_position():
+    x = random.randint(-270, 270)
+    y = random.randint(-270, 240)
+    snake_food.goto(x, y)
 
-x = random.randint(-270, 270)
-y = random.randint(-270, 240)
-snake_food.goto(x, y)
-
+change_position()
 
 def close():
     global running
@@ -41,17 +42,41 @@ def move():
         y = snake_head.ycor()
         y += 20
         snake_head.sety(y)
+    if snake_head.direction == "down":
+        y = snake_head.ycor()
+        y -= 20
+        snake_head.sety(y)
+    if snake_head.direction == "right":
+        x = snake_head.xcor()
+        x += 20
+        snake_head.setx(x)
+    if snake_head.direction == "left":
+        x = snake_head.xcor()
+        x -= 20
+        snake_head.setx(x)
 
 def go_up():
     snake_head.direction = "up"
+def go_down():
+    snake_head.direction = "down"
+def go_right():
+    snake_head.direction = "right"
+def go_left():
+    snake_head.direction = "left"
 
 
 main_screen.listen()
 main_screen.onkeypress(go_up, "Up")
+main_screen.onkeypress(go_down, "Down")
+main_screen.onkeypress(go_left, "Left")
+main_screen.onkeypress(go_right, "Right")
 
 
 running = True
 while running:
     main_screen.update()
+    if snake_head.distance(snake_food) < 20:
+        change_position()
+
     move()
     time.sleep(0.2)
