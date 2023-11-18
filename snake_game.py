@@ -63,20 +63,24 @@ def go_right():
     snake_head.direction = "right"
 def go_left():
     snake_head.direction = "left"
-
-
 main_screen.listen()
 main_screen.onkeypress(go_up, "Up")
 main_screen.onkeypress(go_down, "Down")
 main_screen.onkeypress(go_left, "Left")
 main_screen.onkeypress(go_right, "Right")
-
-
+snake_tails = []
 running = True
 while running:
     main_screen.update()
     if snake_head.distance(snake_food) < 20:
         change_position()
-
+        new_tail = create_turtle("square", "darkgreen")
+        snake_tails.append(new_tail)
+    for i in range(len(snake_tails) - 1, 0, -1):
+        x = snake_tails[i-1].xcor()
+        y = snake_tails[i-1].ycor()
+        snake_tails[i].goto(x,y)
+    if len(snake_tails) >0:
+        snake_tails[0].goto(snake_head.xcor(), snake_head.ycor())
     move()
     time.sleep(0.2)
